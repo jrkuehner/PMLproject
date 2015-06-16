@@ -10,9 +10,9 @@ inerr = 1 - sum(predictTrain == training$class)/ length(training$class)
 inerr
 
 
-predictEval = predict(fitTree, newdata = evaluation, type = "class")
+predictEval = predict(fitTree, newdata = validation, type = "class")
 
-outerr = 1 - sum(predictEval == evaluation$class)/ length(evaluation$class)
+outerr = 1 - sum(predictEval == validation$class)/ length(validation$class)
 outerr
 
 ## err = 1 - Accuracy

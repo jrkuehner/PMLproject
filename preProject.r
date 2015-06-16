@@ -26,7 +26,7 @@ training = pml.training[, nNACols]; dim(training)
 ### Split pml.training in training and validating 
 trainIndex <- createDataPartition(y=pml.training$class, p=0.6, list=FALSE)
 training <- training[trainIndex,]
-evaluation <- training[-trainIndex,]
+validation <- training[-trainIndex,]
 
 ### Take away columns 1 through 7
 training = training[, -(1:7)]

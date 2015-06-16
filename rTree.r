@@ -14,8 +14,8 @@ model$finalModel
 predict_model = predict(model, newdata = training)
 confusionMatrix(predict_model, training$class)
 
-predict_model = predict(model, newdata = evaluation)
-confusionMatrix(predict_model, evaluation$class)
+predict_model = predict(model, newdata = validation)
+confusionMatrix(predict_model, validation$class)
 
 predict(model, pml.testing)
 
