@@ -30,6 +30,7 @@ validation <- training[-trainIndex,]
 
 ### Take away columns 1 through 7
 training = training[, -(1:7)]
+dim(training)
 
 ### Are there near zero variances
 nearZeroVar(training)
