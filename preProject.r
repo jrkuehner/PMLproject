@@ -1,7 +1,6 @@
 #### preProject.r
 #### Do all the preprocessing
 set.seed(1234)
-rm(list = ls())
 library(caret)
 
 ### read csv
