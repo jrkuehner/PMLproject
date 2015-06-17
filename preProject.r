@@ -1,5 +1,6 @@
 #### preProject.r
 #### Do all the preprocessing
+rm(list = ls())
 set.seed(1234)
 library(caret)
 
@@ -16,9 +17,9 @@ table(colSums(is.na(pml.training)))
 ### find cols without NAs
 nNACols = colSums(is.na(pml.training)) == 0
 
-#### save cols without NAs
+#### save cols without, NAs drop first 7 cols
 training = pml.training[, nNACols]; dim(training)
-
+training = training[, -(1:7)]
 ### Should we do this with testing??
 ### testing  = testing[, naCol]; dimtesting)
 
@@ -28,7 +29,7 @@ training <- training[trainIndex,]
 validation <- training[-trainIndex,]
 
 ### Take away columns 1 through 7
-training = training[, -(1:7)]
+### training = training[, -(1:7)]
 dim(training)
 
 ### Are there near zero variances

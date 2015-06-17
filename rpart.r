@@ -1,9 +1,14 @@
+
 source("./preProject.r")
 library(rpart)
 library(rpart.plot)
+#####
 
 ### make decision tree
-fitTree = rpart(class ~ ., data = training, method = "class")
+fitTree = rpart(class ~ ., data = training,
+    control = rpart.control(),
+    method = "class")
+
 predictTrain = predict(fitTree, newdata = training, type = "class")
 ## in.error
 inerr = 1 - sum(predictTrain == training$class)/ length(training$class)
@@ -42,7 +47,7 @@ for (k in 1:K) {
     err = 1.0 - (mc[1,1] + mc[2,2] + mc[3,3] + mc[4,4] + mc[5,5])/sum(mc)
     all.err = rbind(all.err, err)
 }
-
+all.err
 mean(all.err)
 
 #### on validation

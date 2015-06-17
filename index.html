@@ -206,28 +206,31 @@ hr {
 <h2>Abstract</h2>
 
 <p>This is the Writeup of the Pratical Machine Learning Peer Assessment.
-We do some preprocessing on the pml-training file, build tree based models, use cross validation, compute out of sample error and predict test cases on the pml-testing set.. </p>
+We do some preprocessing on the pml-training file, build tree based models, use cross validation, compute out of sample error and predict test cases on the pml-testing set. </p>
 
 <h2>Preprocessing</h2>
 
 <p>We load the files pml-training.csv and pml-testing.csv into R and do some cleaning. Inspecting the training file, we find that there are 19622 observations of 160 variables. In one hundred of these variables 90 percent or more observations
-are not available (NA). We drop these variables and result in a data set training with 19622 observations of 60 variables.</p>
+are not available (NA). We drop these variables and result in a data set training with 19622 observations of 60 variables.
+The first seven variables of the training set contain observations not relevant for modelling and are dropped. We finally have a training set with 11776 obeservations of 53 variables. </p>
 
 <p>We split this training set with the createDataPartition() function from the caret package
 into two parts. One, again called training, containing 80 percent of the data,
 actually used for modelling, the 
 rest, called validation, for cross validation of the models.</p>
 
-<p>The first seven variables of the training set contain observations not relevant for modelling and are dropped. We finally have a training set with 11776 obeservations of 53 variables.</p>
+<p>The r-code for this preprocessing is not included in this report. You may find it in the file
+preProject.r of the master branch of the github.com/jrkuehner/jrkuehner.github.io repository.</p>
 
 <h2>Tree Based Model with Package rpart</h2>
 
 <p>We load the rpart library and construct a decison tree on the training set
-with the rpart() function.</p>
+with the rpart() function. The default option control = rpart.control() includes
+10 fold cross validation.</p>
 
 <pre><code class="r">library(rpart)
 ### make decision tree
-fitTree = rpart(class ~ ., data = training, method = &quot;class&quot;)
+fitTree = rpart(class ~ ., data = training, control = rpart.control(), method = &quot;class&quot;)
 ### predict on training
 predictTrain = predict(fitTree, newdata = training, type = &quot;class&quot;)
 ### predict on validation
@@ -243,6 +246,46 @@ predictValid = predict(fitTree, newdata = validation, type = &quot;class&quot;)
 
 <pre><code class="r">outerr = 1 - sum(predictValid == validation$class)/ length(validation$class)
 </code></pre>
+
+<p>We also made a manual cross validation.
+The r-code can be found in the file
+rpart.r of the master branch of the github.com/jrkuehner/jrkuehner.github.io repository.
+This time the in sample error was 0.2573 wheras the out sample error was 0.2648.</p>
+
+<p>We predict on the testing data.</p>
+
+<pre><code class="r">testPredictTree = predict(fitTree, newdata = pml.testing, type = &quot;class&quot;)
+</code></pre>
+
+<p>The result is</p>
+
+<table><thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+<th>17</th>
+<th>18</th>
+<th>19</th>
+<th>20</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<p>| B | A | E | D | A | C | D | A | A | A | C | E | C | A | E | E | A | B | B | B |</p>
 
 </body>
 
