@@ -2,12 +2,16 @@
 source("./preProject.r")
 library(rpart)
 library(rpart.plot)
+library(rattle)
 #####
 
 ### make decision tree
 fitTree = rpart(class ~ ., data = training,
     control = rpart.control(),
     method = "class")
+
+trellis.par.set(caretTheme())
+fancyRpartPlot(fitTree)
 
 predictTrain = predict(fitTree, newdata = training, type = "class")
 ## in.error
