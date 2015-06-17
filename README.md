@@ -1,1 +1,1 @@
-## Practical Machine Learning Peer Assessment repository
+## Practical Machine Learning Peer Assessment Repository
