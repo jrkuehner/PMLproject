@@ -1,7 +1,7 @@
 # Practical Machine Learning Project
 ##  Abstract
 
-This is the Writeup of the Practical Machine Learning Peer Assessment.
+This is the Writeup of the Practical Machine Learning Peer Assignment.
 We do some preprocessing on the pml-training file, build tree based models, use cross validation, compute out of sample error and predict test cases on the pml-testing set. 
 
 ## Preprocessing
