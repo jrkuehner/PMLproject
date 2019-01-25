@@ -1,2 +1,2 @@
 # PMLproject
-Practical Macinie Learning Project
+Practical Machine Learning Project
