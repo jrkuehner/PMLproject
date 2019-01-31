@@ -1,0 +1,43 @@
+current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/charlock_holmes-0.7.6/ext/charlock_holmes
+/usr/bin/ruby -r ./siteconf20190130-3646-1ymqjj3.rb extconf.rb
+checking for -licui18n... no
+which: no brew in (/home/kuehner/.local/bin:/home/kuehner/bin:/usr/libexec/python3-sphinx:/home/kuehner/.opam/default/bin:/home/kuehner/.local/bin:/home/kuehner/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin)
+checking for -licui18n... no
+
+
+***************************************************************************************
+*********** icu required (brew install icu4c or apt-get install libicu-dev) ***********
+***************************************************************************************
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib64
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/usr/bin/$(RUBY_BASE_NAME)
+	--with-icu-dir
+	--without-icu-dir
+	--with-icu-include
+	--without-icu-include=${icu-dir}/include
+	--with-icu-lib
+	--without-icu-lib=${icu-dir}/lib64
+	--with-icui18nlib
+	--without-icui18nlib
+	--with-icui18nlib
+	--without-icui18nlib
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/extensions/x86_64-linux/2.5.0/charlock_holmes-0.7.6/mkmf.log
+
+extconf failed, exit code 1

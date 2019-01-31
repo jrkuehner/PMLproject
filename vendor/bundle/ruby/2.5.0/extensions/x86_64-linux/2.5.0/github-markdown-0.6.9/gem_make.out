@@ -1,0 +1,99 @@
+current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/github-markdown-0.6.9/ext/markdown
+/usr/bin/ruby -r ./siteconf20190130-4944-njqh98.rb extconf.rb
+creating Makefile
+
+current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/github-markdown-0.6.9/ext/markdown
+make "DESTDIR=" clean
+rm -f 
+rm -f markdown.so  *.o  *.bak mkmf.log .*.time
+
+current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/github-markdown-0.6.9/ext/markdown
+make "DESTDIR="
+gcc -I. -I/usr/include -I/usr/include/ruby/backward -I/usr/include -I.   -fPIC -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fPIC -fvisibility=hidden  -m64 -o autolink.o -c autolink.c
+gcc -I. -I/usr/include -I/usr/include/ruby/backward -I/usr/include -I.   -fPIC -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fPIC -fvisibility=hidden  -m64 -o buffer.o -c buffer.c
+gcc -I. -I/usr/include -I/usr/include/ruby/backward -I/usr/include -I.   -fPIC -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fPIC -fvisibility=hidden  -m64 -o gh-markdown.o -c gh-markdown.c
+gh-markdown.c: In function ‘rndr_blockcode_github’:
+gh-markdown.c:56:29: warning: implicit declaration of function ‘isspace’ [-Wimplicit-function-declaration]
+   while (i < lang->size && !isspace(lang->data[i]))
+                             ^~~~~~~
+gh-markdown.c:60:14: warning: pointer targets in assignment from ‘uint8_t * const’ {aka ‘unsigned char * const’} to ‘const char *’ differ in signedness [-Wpointer-sign]
+    lang_name = lang->data + 1;
+              ^
+gh-markdown.c:63:14: warning: pointer targets in assignment from ‘uint8_t * const’ {aka ‘unsigned char * const’} to ‘const char *’ differ in signedness [-Wpointer-sign]
+    lang_name = lang->data;
+              ^
+In file included from /usr/include/ruby.h:33,
+                 from gh-markdown.c:17:
+gh-markdown.c:71:24: warning: pointer targets in passing argument 1 of ‘rb_enc_str_new_static’ differ in signedness [-Wpointer-sign]
+     geefem_str_new(text->data, text->size),
+                        ^
+gh-markdown.c:71:5: note: in expansion of macro ‘geefem_str_new’
+     geefem_str_new(text->data, text->size),
+     ^~~~~~~~~~~~~~
+In file included from gh-markdown.c:20:
+/usr/include/ruby/encoding.h:134:7: note: expected ‘const char *’ but argument is of type ‘uint8_t * const’ {aka ‘unsigned char * const’}
+ VALUE rb_enc_str_new_static(const char*, long, rb_encoding*);
+       ^~~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/ruby.h:33,
+                 from gh-markdown.c:17:
+gh-markdown.c:71:24: warning: pointer targets in passing argument 1 of ‘rb_enc_str_new’ differ in signedness [-Wpointer-sign]
+     geefem_str_new(text->data, text->size),
+                        ^
+gh-markdown.c:71:5: note: in expansion of macro ‘geefem_str_new’
+     geefem_str_new(text->data, text->size),
+     ^~~~~~~~~~~~~~
+In file included from gh-markdown.c:20:
+/usr/include/ruby/encoding.h:132:7: note: expected ‘const char *’ but argument is of type ‘uint8_t * const’ {aka ‘unsigned char * const’}
+ VALUE rb_enc_str_new(const char*, long, rb_encoding*);
+       ^~~~~~~~~~~~~~
+gh-markdown.c:82:3: warning: implicit declaration of function ‘houdini_escape_html0’ [-Wimplicit-function-declaration]
+   houdini_escape_html0(ob, lang_name, lang_size, 0);
+   ^~~~~~~~~~~~~~~~~~~~
+gh-markdown.c: In function ‘rb_ghmd_to_html’:
+gh-markdown.c:122:33: warning: pointer targets in passing argument 2 of ‘sd_markdown_render’ differ in signedness [-Wpointer-sign]
+  sd_markdown_render(output_buf, RSTRING_PTR(rb_text), RSTRING_LEN(rb_text), md);
+                                 ^~~~~~~~~~~
+In file included from gh-markdown.c:26:
+markdown.h:124:1: note: expected ‘const uint8_t *’ {aka ‘const unsigned char *’} but argument is of type ‘char *’
+ sd_markdown_render(struct buf *ob, const uint8_t *document, size_t doc_size, struct sd_markdown *md);
+ ^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/ruby/ruby.h:29,
+                 from /usr/include/ruby.h:33,
+                 from gh-markdown.c:17:
+gh-markdown.c:125:37: warning: pointer targets in passing argument 1 of ‘rb_enc_str_new_static’ differ in signedness [-Wpointer-sign]
+  rb_text = geefem_str_new(output_buf->data, output_buf->size);
+                                     ^
+gh-markdown.c:125:12: note: in expansion of macro ‘geefem_str_new’
+  rb_text = geefem_str_new(output_buf->data, output_buf->size);
+            ^~~~~~~~~~~~~~
+In file included from gh-markdown.c:20:
+/usr/include/ruby/encoding.h:134:7: note: expected ‘const char *’ but argument is of type ‘uint8_t *’ {aka ‘unsigned char *’}
+ VALUE rb_enc_str_new_static(const char*, long, rb_encoding*);
+       ^~~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/ruby/ruby.h:29,
+                 from /usr/include/ruby.h:33,
+                 from gh-markdown.c:17:
+gh-markdown.c:125:37: warning: pointer targets in passing argument 1 of ‘rb_enc_str_new’ differ in signedness [-Wpointer-sign]
+  rb_text = geefem_str_new(output_buf->data, output_buf->size);
+                                     ^
+gh-markdown.c:125:12: note: in expansion of macro ‘geefem_str_new’
+  rb_text = geefem_str_new(output_buf->data, output_buf->size);
+            ^~~~~~~~~~~~~~
+In file included from gh-markdown.c:20:
+/usr/include/ruby/encoding.h:132:7: note: expected ‘const char *’ but argument is of type ‘uint8_t *’ {aka ‘unsigned char *’}
+ VALUE rb_enc_str_new(const char*, long, rb_encoding*);
+       ^~~~~~~~~~~~~~
+gcc -I. -I/usr/include -I/usr/include/ruby/backward -I/usr/include -I.   -fPIC -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fPIC -fvisibility=hidden  -m64 -o houdini_href_e.o -c houdini_href_e.c
+gcc -I. -I/usr/include -I/usr/include/ruby/backward -I/usr/include -I.   -fPIC -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fPIC -fvisibility=hidden  -m64 -o houdini_html_e.o -c houdini_html_e.c
+gcc -I. -I/usr/include -I/usr/include/ruby/backward -I/usr/include -I.   -fPIC -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fPIC -fvisibility=hidden  -m64 -o html.o -c html.c
+gcc -I. -I/usr/include -I/usr/include/ruby/backward -I/usr/include -I.   -fPIC -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fPIC -fvisibility=hidden  -m64 -o markdown.o -c markdown.c
+gcc -I. -I/usr/include -I/usr/include/ruby/backward -I/usr/include -I.   -fPIC -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fPIC -fvisibility=hidden  -m64 -o plaintext.o -c plaintext.c
+gcc -I. -I/usr/include -I/usr/include/ruby/backward -I/usr/include -I.   -fPIC -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fPIC -fvisibility=hidden  -m64 -o stack.o -c stack.c
+rm -f markdown.so
+gcc -shared -o markdown.so autolink.o buffer.o gh-markdown.o houdini_href_e.o houdini_html_e.o html.o markdown.o plaintext.o stack.o -L. -L/usr/lib64 -L. -Wl,-z,relro   -Wl,-z,now -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-z,relro   -Wl,-z,now -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -m64  -m64  -lruby    -lc
+
+current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/github-markdown-0.6.9/ext/markdown
+make "DESTDIR=" install
+/usr/bin/mkdir -p . ./.gem.20190130-4944-acd90o/github
+exit > .sitearchdir.-.github.time
+/usr/bin/install -c -m 0755 markdown.so ./.gem.20190130-4944-acd90o/github

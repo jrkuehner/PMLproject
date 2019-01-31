@@ -1,0 +1,145 @@
+# Practical Machine Learning Project
+##  Abstract
+
+This is the Writeup of the Practical Machine Learning Peer Assignment.
+We do some preprocessing on the pml-training file, build tree based models, use cross validation, compute out of sample error and predict test cases on the pml-testing set. 
+
+## Preprocessing
+
+We load the files pml-training.csv and pml-testing.csv into R and do some cleaning. Inspecting the training file, we find that there are 19622 observations of 160 variables. In one hundred of these variables 90 percent or more observations
+are not available (NA). We drop these variables and result in a data set training with 19622 observations of 60 variables.
+The first seven variables of the training set contain observations not relevant for modeling and are dropped. We finally have a training set with 11776 observations of 53 variables. 
+
+```{r echo=FALSE, results="hide"}
+#### preProject.r
+#### Do all the preprocessing
+rm(list = ls())
+set.seed(1234)
+library(caret)
+library(rpart)
+library(randomForest)
+library(rattle)
+
+### read csv
+pml.training = read.csv("pml-training.csv", na.string = c("NA", "#DIV/0!"))
+pml.testing = read.csv("pml-testing.csv", na.string = c("NA", "#DIV/0!"))
+names(pml.training)[160] = "class"
+names(pml.testing)[160] = "class"
+
+### are there NA's
+table(colSums(is.na(pml.training)))
+
+### yes, lots
+### find cols without NAs
+nNACols = colSums(is.na(pml.training)) == 0
+
+#### save cols without NAs, drop first 7 cols
+training = pml.training[, nNACols]; dim(training)
+training = training[, -(1:7)]
+
+### Split pml.training in training and validating 
+trainIndex <- createDataPartition(y=pml.training$class, p=0.6, list=FALSE)
+training <- training[trainIndex,]
+validation <- training[-trainIndex,]
+
+### Are there near zero variances
+nearZeroVar(training)
+### No
+```
+
+We split this training set with the createDataPartition() function from the caret package
+into two parts. One, again called training, containing 80 percent of the data,
+actually used for modeling, the 
+rest, called validation, for cross validation of the models.
+
+The r-code for this preprocessing is not included in this report. You may find it in the file
+preProject.r of the master branch of the github.com/jrkuehner/jrkuehner.github.io repository.
+
+## Tree Based Model with Package rpart
+
+We load the rpart library and construct a decision tree on the training set
+with the rpart() function. The default option control = rpart.control() includes
+10 fold cross validation.
+
+```{r echo = FALSE }
+### make decision tree
+fitTree = rpart(class ~ ., data = training, control = rpart.control(), method = "class")
+### predict on training
+predictTrain = predict(fitTree, newdata = training, type = "class")
+### predict on validation
+predictValid = predict(fitTree, newdata = validation, type = "class")
+```
+
+We plot the decision tree.
+
+```{r message = "hide"}
+trellis.par.set(caretTheme())
+fancyRpartPlot(fitTree)
+```
+
+
+We compute the in sample error manually.
+
+``` {r  inerr }
+inerr = 1 - sum(predictTrain == training$class)/ length(training$class); inerr
+```
+
+We compute the out sample error manually.
+
+```{r outerr }
+outerr = 1 - sum(predictValid == validation$class)/ length(validation$class); outerr
+```
+
+We also made a manual cross validation.
+The r-code can be found in the file
+rpart.r of the master branch of the github.com/jrkuehner/jrkuehner.github.io repository.
+This time the in sample error was 0.2573 whereas the out sample error was 0.2648.
+
+We predict on the testing data.
+
+```{r predict }
+testPredictTree = predict(fitTree, newdata = pml.testing, type = "class"); testPredictTree
+```
+
+
+## Random Forest Model with Package caret
+
+We wanted to try random forest modeling. We apply the train() function
+with the training data, method "random forest" and trControl option "cross validation".
+
+```{r message = "hide", random }
+forest = train(class ~ ., data = training, method = "rf",
+trControl = trainControl(method = "cv", number = 2, allowParallel = TRUE))
+```
+
+```{r }
+forest$finalModel
+```
+It may be informative to have a plot of accuracy against randomly selected predictors. 
+
+```{r }
+trellis.par.set(caretTheme())
+plot(forest)
+```
+
+
+The model predicts well on the training data. We do not show the output here.
+```{r eval = FALSE }
+predictForest = predict(forest, newdata = training)
+confusionMatrix(predictForest, training$class)
+```
+
+We verify prediction on the validation data.
+
+```{r validation }
+predictValid = predict(forest, newdata = validation)
+confusionMatrix(predictValid, validation$class)
+```
+
+Finally we predict on the testing data.
+```{r forest predict }
+predict(forest, pml.testing)
+```
+
+This is what we will submit in the second part of the assessment.
+
