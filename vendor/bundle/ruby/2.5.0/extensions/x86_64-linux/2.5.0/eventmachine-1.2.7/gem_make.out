@@ -1,5 +1,5 @@
 current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/eventmachine-1.2.7/ext/fastfilereader
-/usr/bin/ruby -r ./siteconf20190130-4944-5wmpqi.rb extconf.rb
+/usr/bin/ruby -r ./siteconf20190204-3541-14v569k.rb extconf.rb
 creating Makefile
 
 current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/eventmachine-1.2.7/ext/fastfilereader
@@ -16,6 +16,6 @@ g++ -shared -o fastfilereaderext.so mapper.o rubymain.o -L. -L/usr/lib64 -L. -Wl
 
 current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/eventmachine-1.2.7/ext/fastfilereader
 make "DESTDIR=" install
-/usr/bin/mkdir -p . ./.gem.20190130-4944-1k69d7a
+/usr/bin/mkdir -p . ./.gem.20190204-3541-ca1v4e
 exit > .sitearchdir.time
-/usr/bin/install -c -m 0755 fastfilereaderext.so ./.gem.20190130-4944-1k69d7a
+/usr/bin/install -c -m 0755 fastfilereaderext.so ./.gem.20190204-3541-ca1v4e

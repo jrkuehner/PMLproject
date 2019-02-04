@@ -1,5 +1,5 @@
 current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/github-markdown-0.6.9/ext/markdown
-/usr/bin/ruby -r ./siteconf20190130-4944-njqh98.rb extconf.rb
+/usr/bin/ruby -r ./siteconf20190204-3541-1xlkeuh.rb extconf.rb
 creating Makefile
 
 current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/github-markdown-0.6.9/ext/markdown
@@ -94,6 +94,6 @@ gcc -shared -o markdown.so autolink.o buffer.o gh-markdown.o houdini_href_e.o ho
 
 current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/github-markdown-0.6.9/ext/markdown
 make "DESTDIR=" install
-/usr/bin/mkdir -p . ./.gem.20190130-4944-acd90o/github
+/usr/bin/mkdir -p . ./.gem.20190204-3541-x0o1bj/github
 exit > .sitearchdir.-.github.time
-/usr/bin/install -c -m 0755 markdown.so ./.gem.20190130-4944-acd90o/github
+/usr/bin/install -c -m 0755 markdown.so ./.gem.20190204-3541-x0o1bj/github
