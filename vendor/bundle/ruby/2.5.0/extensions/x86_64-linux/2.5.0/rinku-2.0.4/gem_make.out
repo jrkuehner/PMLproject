@@ -1,5 +1,5 @@
 current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/rinku-2.0.4/ext/rinku
-/usr/bin/ruby -r ./siteconf20190204-3541-8gnybz.rb extconf.rb
+/usr/bin/ruby -r ./siteconf20190204-22033-1vwuptm.rb extconf.rb
 creating Makefile
 
 current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/rinku-2.0.4/ext/rinku
@@ -19,6 +19,6 @@ gcc -shared -o rinku.so autolink.o buffer.o rinku.o rinku_rb.o utf8.o -L. -L/usr
 
 current directory: /home/kuehner/jrkuehner.github.io/vendor/bundle/ruby/2.5.0/gems/rinku-2.0.4/ext/rinku
 make "DESTDIR=" install
-/usr/bin/mkdir -p . ./.gem.20190204-3541-1fztovf
+/usr/bin/mkdir -p . ./.gem.20190204-22033-1f6mdui
 exit > .sitearchdir.time
-/usr/bin/install -c -m 0755 rinku.so ./.gem.20190204-3541-1fztovf
+/usr/bin/install -c -m 0755 rinku.so ./.gem.20190204-22033-1f6mdui
